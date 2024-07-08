@@ -18,6 +18,30 @@ npm install vitejs-aws-oauth
 
 ## Utilizzo
 
+### Configurare ViteJS per gestire la subfolder di AWS S3
+
+```typescript
+// vite.config.ts
+
+import { defineConfig, loadEnv } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+
+  return {
+    build: {
+      sourcemap: true,
+    },
+    plugins: [react()],
+    base: "/${subfolder}/", // <-- Inserire il nome della sottocartella caricata su AWS S3 es. '/react-app/'
+    define: {
+      "process.env": env,
+    },
+  };
+});
+```
+
 ### 1. AuthProvider
 
 `AuthProvider` è un componente che deve avvolgere la tua applicazione per gestire correttamente la modifica della posizione URL.
@@ -32,9 +56,9 @@ import App from "./App.tsx";
 import { HashRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <HashRouter>
+  <AuthProvider>
     <App />
-  </HashRouter>
+  </AuthProvider>
 );
 ```
 

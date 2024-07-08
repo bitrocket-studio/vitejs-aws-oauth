@@ -8,7 +8,6 @@ import {
 
 interface PropsAuthSignIn extends ParamsGetTokenAccess {
   children: React.ReactNode;
-  baseURL: string;
 }
 
 export const AuthSignIn: React.FC<PropsAuthSignIn> = ({
@@ -17,7 +16,6 @@ export const AuthSignIn: React.FC<PropsAuthSignIn> = ({
   client_id,
   callback,
   oAuthURL,
-  baseURL,
 }) => {
   const location = useLocation();
   const code = getAuthCode();
@@ -31,7 +29,8 @@ export const AuthSignIn: React.FC<PropsAuthSignIn> = ({
         callback,
         oAuthURL,
       }).then(() => {
-        window.history.replaceState({}, "", baseURL);
+        // @ts-ignore
+        window.history.replaceState({}, "", import.meta.env.BASE_URL);
       });
     }
   }, [location.pathname, code]);
