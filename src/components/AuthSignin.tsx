@@ -6,7 +6,7 @@ import {
   getTokenAccess,
 } from "../utils/helpers";
 
-interface PropsAuthSignIn extends ParamsGetTokenAccess {
+interface PropsAuthSignIn extends Omit<ParamsGetTokenAccess, "code"> {
   children: React.ReactNode;
 }
 
