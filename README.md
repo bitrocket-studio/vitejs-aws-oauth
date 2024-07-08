@@ -1,6 +1,6 @@
 # vitejs-aws-oauth
 
-_vitejs-aws-oauth_ è una libreria React progettata per gestire l'autenticazione tramite OAuth2.0 con **Amazon Cognito** su server statici di AWS S3. Questa libreria è particolarmente utile per le applicazioni che sono servite da una subfolder all'interno di un bucket S3, dove ogni subfolder rappresenta una singola applicazione.
+_vitejs-aws-oauth_ è una libreria ReactJS progettata per gestire l'autenticazione tramite OAuth2.0 con **Amazon Cognito su server statici di AWS S3 che contengono più applicazioni in diverse subfolder dello stesso bucket**.
 
 ## Premesse
 
