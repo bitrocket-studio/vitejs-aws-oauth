@@ -3,20 +3,17 @@ import { useLocation } from "react-router-dom";
 
 interface PropsProviderAuth {
   children: React.ReactNode;
-  baseURL: string;
 }
 
-export const AuthProvider: React.FC<PropsProviderAuth> = ({
-  children,
-  baseURL,
-}) => {
+export const AuthProvider: React.FC<PropsProviderAuth> = ({ children }) => {
   const location = useLocation();
   const isRoot = window.location.hash === "#/";
 
   useEffect(() => {
     if (isRoot) {
       window.location.hash = "";
-      window.history.replaceState({}, "", baseURL);
+      // @ts-ignore
+      window.history.replaceState({}, "", import.meta.env.BASE_URL);
     }
   }, [location.pathname, isRoot]);
 
