@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "publish": "npm version patch && npm run build && npm publish --access public"
+    "npm:publish": "npm version patch && npm run build && npm publish --access public"
   },
   "dependencies": {
     "react": "^17.0.2",
